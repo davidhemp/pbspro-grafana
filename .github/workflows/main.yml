@@ -22,10 +22,10 @@ jobs:
       - run: sudo ln -s /lib64/libmunge.so.2 /lib64/libmunge.so
       - run: sudo sed -i 's/PBS_START_MOM=0/PBS_START_MOM=1/g' /etc/pbs.conf
       - run: sudo systemctl restart pbs
-      - run: tests/run-tests.sh > log
+      - run: mkdir -p tests/logs && tests/run-tests.sh > tests/logs/tests-log
 
       - uses: actions/upload-artifact@v3
         with:
-          name: output-log
-          path: log
+          name: output-logs
+          path: tests/logs
 
