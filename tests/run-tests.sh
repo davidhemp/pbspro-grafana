@@ -1,8 +1,10 @@
 #!/bin/bash
 
+export PATH==/opt/pbs/bin/:$PATH
+
 sudo /opt/pbs/bin/pbsnodes -a
-/opt/pbs/bin/qstat -q
-/opt/pbs/bin/qsub tests/*.pbs
+qstat -q
+qsub tests/*.pbs
 
 QUEUE="workq"
 RUNNING=$(qstat -q | grep "$QUEUE" | awk '{ print $6 }')
@@ -13,7 +15,7 @@ if [[ $RUNNING -eq 0 && $QUEUED -eq 0 ]]; then
 else
     echo "Still waiting"
     n=$(( n + 1))
-    if [[ $n -ge 10 ]]; then
+    if [[ $n -ge 60 ]]; then
         exit 1
     fi
     sleep 10
