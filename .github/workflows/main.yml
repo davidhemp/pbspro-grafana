@@ -13,3 +13,6 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - run: wget https://vcdn.altair.com/rl/OpenPBS/openpbs_23.06.06.ubuntu_20.04.zip
+      - run: sudo apt-get install unzip
+      - run: unzip openpbs_23.06.06.ubuntu_20.04.zip
+      - run: sudo dpkg -i ~/openpbs_23.06.06.ubuntu_20.04/openpbs-server_23.06.06-1_amd64.deb
