@@ -1,0 +1,5 @@
+#!/bin/bash
+#PBS -o stdout
+#PBS -e stderr
+
+echo "hello world"
