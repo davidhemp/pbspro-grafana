@@ -24,8 +24,7 @@ jobs:
       - run: sudo systemctl restart pbs
       - run: mkdir -p tests/logs
 
-      - run: sudo iptables -L
-      - run: systemctl status firewalld
+      - run: sudo iptables -F
 
       - run: sudo /opt/pbs/bin/pbsnodes -a
       - run: /opt/pbs/bin/qsub tests/*.pbs
