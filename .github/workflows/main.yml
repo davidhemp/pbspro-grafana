@@ -20,4 +20,6 @@ jobs:
       - run: sudo create-munge-key
       - run: sudo ln -s /lib64/libmunge.so.2 /lib64/libmunge.so
       - run: sudo sed -i 's/PBS_START_MOM=0/PBS_START_MOM=1/g' /etc/pbs.conf
+      - run: sudo systemctl restart pbs
+      - run: systemctl status pbs
       - run: /opt/pbs/bin/qstat -q
