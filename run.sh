@@ -1,5 +1,5 @@
 #!/bin/bash
 
-. env
+. .env
 
 echo "$TEST_VAR"
