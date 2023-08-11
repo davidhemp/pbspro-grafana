@@ -28,5 +28,5 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: output-log
-          path: tests/run-tests.sh
+          path: log
 
