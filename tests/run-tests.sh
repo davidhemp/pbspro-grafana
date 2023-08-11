@@ -13,6 +13,7 @@ if [[ $RUNNING -eq 0 && $QUEUED -eq 0 ]]; then
     exit 0
 else
     echo "Still waiting"
+    /opt/pbs/bin/qstat -f
     n=$(( n + 1))
     if [[ $n -ge 60 ]]; then
         exit 1
