@@ -180,7 +180,7 @@ set queue v1_small72a started = True
 create queue v1_medium24
 set queue v1_medium24 queue_type = Execution
 set queue v1_medium24 default_chunk.Qlist = v1_medium24
-set queue v1_medium24 resources_min.ncpus = 1
+set queue v1_medium24 resources_min.ncpus = 17
 set queue v1_medium24 resources_max.ncpus = 64
 set queue v1_medium24 resources_max.ngpus = 0
 set queue v1_medium24 resources_max.walltime = 24:00:00
@@ -196,7 +196,7 @@ set queue v1_medium24 started = True
 create queue v1_medium24a
 set queue v1_medium24a queue_type = Execution
 set queue v1_medium24a default_chunk.Qlist = v1_medium24a
-set queue v1_medium24a resources_min.ncpus = 1
+set queue v1_medium24a resources_min.ncpus = 17
 set queue v1_medium24a resources_max.ncpus = 64
 set queue v1_medium24a resources_max.ngpus = 0
 set queue v1_medium24a resources_max.walltime = 24:00:00
@@ -212,7 +212,7 @@ set queue v1_medium24a started = True
 create queue v1_medium72
 set queue v1_medium72 queue_type = Execution
 set queue v1_medium72 default_chunk.Qlist = v1_medium72
-set queue v1_medium72 resources_min.ncpus = 1
+set queue v1_medium72 resources_min.ncpus = 16
 set queue v1_medium72 resources_max.ncpus = 64
 set queue v1_medium72 resources_max.ngpus = 0
 set queue v1_medium72 resources_max.walltime = 72:00:00
@@ -228,7 +228,7 @@ set queue v1_medium72 started = True
 create queue v1_medium72a
 set queue v1_medium72a queue_type = Execution
 set queue v1_medium72a default_chunk.Qlist = v1_medium72a
-set queue v1_medium72a resources_min.ncpus = 1
+set queue v1_medium72a resources_min.ncpus = 16
 set queue v1_medium72a resources_max.ncpus = 64
 set queue v1_medium72a resources_max.ngpus = 0
 set queue v1_medium72a resources_max.walltime = 72:00:00
@@ -244,7 +244,7 @@ set queue v1_medium72a started = True
 create queue v1_large24
 set queue v1_large24 queue_type = Execution
 set queue v1_large24 default_chunk.Qlist = v1_large24
-set queue v1_large24 resources_min.ncpus = 1
+set queue v1_large24 resources_min.ncpus = 65
 set queue v1_large24 resources_max.ncpus = 128
 set queue v1_large24 resources_max.ngpus = 0
 set queue v1_large24 resources_max.walltime = 24:00:00
@@ -260,7 +260,7 @@ set queue v1_large24 started = True
 create queue v1_large24a
 set queue v1_large24a queue_type = Execution
 set queue v1_large24a default_chunk.Qlist = v1_large24a
-set queue v1_large24a resources_min.ncpus = 1
+set queue v1_large24a resources_min.ncpus = 65
 set queue v1_large24a resources_max.ncpus = 128
 set queue v1_large24a resources_max.ngpus = 0
 set queue v1_large24a resources_max.walltime = 24:00:00
@@ -276,7 +276,7 @@ set queue v1_large24a started = True
 create queue v1_large72
 set queue v1_large72 queue_type = Execution
 set queue v1_large72 default_chunk.Qlist = v1_large72
-set queue v1_large72 resources_min.ncpus = 1
+set queue v1_large72 resources_min.ncpus = 65
 set queue v1_large72 resources_max.ncpus = 128
 set queue v1_large72 resources_max.ngpus = 0
 set queue v1_large72 resources_max.walltime = 72:00:00
@@ -292,7 +292,7 @@ set queue v1_large72 started = True
 create queue v1_large72a
 set queue v1_large72a queue_type = Execution
 set queue v1_large72a default_chunk.Qlist = v1_large72a
-set queue v1_large72a resources_min.ncpus = 1
+set queue v1_large72a resources_min.ncpus = 65
 set queue v1_large72a resources_max.ncpus = 128
 set queue v1_large72a resources_max.ngpus = 0
 set queue v1_large72a resources_max.walltime = 72:00:00
