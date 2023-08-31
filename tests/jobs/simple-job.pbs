@@ -1,7 +1,0 @@
-#!/bin/bash
-#PBS -o stdout
-#PBS -e stderr
-
-cd $PBS_O_WORKDIR
-
-echo "hello world"
