@@ -30,7 +30,8 @@ jobs:
       - run: sudo /opt/pbs/bin/pbsnodes -a > tests/logs/pbsnodes.log
       - run: for j in $(ls tests/jobs/); do /opt/pbs/bin/qsub tests/jobs/${j}; done
       - run: /opt/pbs/bin/qstat > tests/logs/qstat-start.log
-      - run: sleep 10
+      - run: sleep 5
+      - runt: tests/check-jobs.sh > tests/logs/check-jobs.log
 
       - uses: actions/upload-artifact@v3
         with:
