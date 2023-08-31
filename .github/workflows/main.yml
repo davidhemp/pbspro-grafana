@@ -27,9 +27,9 @@ jobs:
       - run: sudo iptables -F
 
       - run: sudo /opt/pbs/bin/qmgr < tests/test-cluster
-      - run: sudo /opt/pbs/bin/pbsnodes -a > output-logs/pbsnodes.log
+      - run: sudo /opt/pbs/bin/pbsnodes -a > output-logs/logs/pbsnodes.log
       - run: /opt/pbs/bin/qsub tests/jobs/*.pbs
-      - run: /opt/pbs/bin/qstat -q > output-logs/qstat-start.log
+      - run: /opt/pbs/bin/qstat -q > tests/logs/qstat-start.log
       - run: sleep 10
 
       - uses: actions/upload-artifact@v3
