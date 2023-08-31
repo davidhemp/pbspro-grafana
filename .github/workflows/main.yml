@@ -29,7 +29,7 @@ jobs:
       - run: sudo /opt/pbs/bin/qmgr < tests/test-cluster
       - run: sudo /opt/pbs/bin/pbsnodes -a > tests/logs/pbsnodes.log
       - run: for j in $(ls tests/jobs/); do /opt/pbs/bin/qsub tests/jobs/${j}; done
-      - run: /opt/pbs/bin/qstat -q > tests/logs/qstat-start.log
+      - run: /opt/pbs/bin/qstat > tests/logs/qstat-start.log
       - run: sleep 10
 
       - uses: actions/upload-artifact@v3
