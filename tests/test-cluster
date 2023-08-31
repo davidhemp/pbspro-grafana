@@ -1,0 +1,411 @@
+#
+# Create custom resources before defining queues
+#
+#
+# Create and define resource ngpus
+#
+create resource ngpus
+set resource ngpus type = long
+set resource ngpus flag = hn
+#
+# Create and define resource Qlist
+#
+create resource Qlist
+set resource Qlist type = string_array
+set resource Qlist flag = h
+#
+# Create custom resource cpu_type
+#
+create resource cpu_type
+set resource cpu_type type = string
+set resource cpu_type flag = h
+#
+# Create custom resource gpu_type
+#
+create resource gpu_type
+set resource gpu_type type = string
+set resource gpu_type flag = h
+#
+# Create custom resource fs_type
+#
+create resource fs_type
+set resource fs_type type = string
+set resource fs_type flag = h
+#
+# Create and define resource rack
+# and set at placement group
+create resource rack
+set resource rack type = string
+set resource rack flag = h
+set sched do_not_span_psets=true
+set server node_group_enable = True
+set server node_group_key = rack
+#
+# Create queues and set their attributes.
+#
+#
+# cx queues
+#
+# Create and define queue pqjupyter
+#
+create queue pqjupyter
+set queue pqjupyter queue_type = Execution
+set queue pqjupyter default_chunk.Qlist = pqjupyter
+set queue pqjupyter resources_max.ncpus = 8
+set queue pqjupyter resources_max.ngpus = 0
+set queue pqjupyter resources_max.walltime = 8:00:00
+set queue pqjupyter resources_max.cput = 230400
+set queue pqjupyter resources_max.mem = 64gb
+set queue pqjupyter resources_max.nodect = 1
+set queue pqjupyter max_queued = [u:PBS_GENERIC=1]
+set queue pqjupyter max_run = [u:PBS_GENERIC=1]
+set queue pqjupyter enabled = True
+set queue pqjupyter started = True
+#
+# Create and define queue pqjupytergpu
+#
+create queue pqjupytergpu
+set queue pqjupytergpu queue_type = Execution
+set queue pqjupytergpu default_chunk.Qlist = pqjupytergpu
+set queue pqjupytergpu resources_max.ncpus = 8
+set queue pqjupytergpu resources_max.ngpus = 1
+set queue pqjupytergpu resources_max.walltime = 8:00:00
+set queue pqjupytergpu resources_max.cput = 230400
+set queue pqjupytergpu resources_max.mem = 64gb
+set queue pqjupytergpu resources_max.nodect = 1
+set queue pqjupytergpu max_run = [u:PBS_GENERIC=1]
+set queue pqjupytergpu max_queued = [u:PBS_GENERIC=1]
+set queue pqjupytergpu enabled = True
+set queue pqjupytergpu started = True
+
+#
+# Create and define queue cx_debug4
+#
+create queue v1_cx_debug4
+set queue v1_cx_debug4 queue_type = Execution
+set queue v1_cx_debug4 default_chunk.Qlist = v1_cx_debug4
+set queue v1_cx_debug4 resources_min.ncpus = 1
+set queue v1_cx_debug4 resources_max.ncpus = 16
+set queue v1_cx_debug4 resources_max.ngpus = 0
+set queue v1_cx_debug4 resources_max.walltime = 4:00:00
+set queue v1_cx_debug4 resources_max.cput = 230400
+set queue v1_cx_debug4 resources_max.mem = 128gb
+set queue v1_cx_debug4 resources_max.nodect = 1
+set queue v1_cx_debug4 max_array_size = 100
+set queue v1_cx_debug4 enabled = True
+set queue v1_cx_debug4 started = True
+#
+# Create and define queue gpu
+#
+create queue v1_gpu72
+set queue v1_gpu72 queue_type = Execution
+set queue v1_gpu72 default_chunk.Qlist = v1_gpu72
+set queue v1_gpu72 resources_min.ncpus = 1
+set queue v1_gpu72 resources_max.ncpus = 128
+set queue v1_gpu72 resources_min.ngpus = 1
+set queue v1_gpu72 resources_max.ngpus = 8
+set queue v1_gpu72 resources_max.walltime = 72:0:0
+set queue v1_gpu72 resources_max.cput = 3686400
+set queue v1_gpu72 resources_max.mem = 920gb
+set queue v1_gpu72 resources_max.nodect = 1
+set queue v1_gpu72 enabled = True
+set queue v1_gpu72 started = True
+#
+# Create and define queue small24
+#
+create queue v1_small24
+set queue v1_small24 queue_type = Execution
+set queue v1_small24 default_chunk.Qlist = v1_small24
+set queue v1_small24 resources_min.ncpus = 1
+set queue v1_small24 resources_max.ncpus = 16
+set queue v1_small24 resources_max.ngpus = 0
+set queue v1_small24 resources_max.walltime = 24:00:00
+set queue v1_small24 resources_max.cput = 1382400
+set queue v1_small24 resources_max.mem = 128gb
+set queue v1_small24 resources_max.nodect = 1
+set queue v1_small24 max_array_size = 0
+set queue v1_small24 enabled = True
+set queue v1_small24 started = True
+#
+# Create and define queue small24a
+#
+create queue v1_small24a
+set queue v1_small24a queue_type = Execution
+set queue v1_small24a default_chunk.Qlist = v1_small24a
+set queue v1_small24a resources_min.ncpus = 1
+set queue v1_small24a resources_max.ncpus = 16
+set queue v1_small24a resources_max.ngpus = 0
+set queue v1_small24a resources_max.walltime = 24:0:0
+set queue v1_small24a resources_max.cput = 1382400
+set queue v1_small24a resources_max.mem = 128gb
+set queue v1_small24a resources_max.nodect = 1
+set queue v1_small24a max_array_size = 10000
+set queue v1_small24a enabled = True
+set queue v1_small24a started = True
+#
+# Create and define queue small72
+#
+create queue v1_small72
+set queue v1_small72 queue_type = Execution
+set queue v1_small72 default_chunk.Qlist = v1_small72
+set queue v1_small72 resources_min.ncpus = 1
+set queue v1_small72 resources_max.ncpus = 16
+set queue v1_small72 resources_max.ngpus = 0
+set queue v1_small72 resources_max.walltime = 72:00:00
+set queue v1_small72 resources_max.cput = 4147200
+set queue v1_small72 resources_max.mem = 128gb
+set queue v1_small72 resources_max.nodect = 1
+set queue v1_small72 max_array_size = 0
+set queue v1_small72 enabled = True
+set queue v1_small72 started = True
+#
+# Create and define queue small72a
+#
+create queue v1_small72a
+set queue v1_small72a queue_type = Execution
+set queue v1_small72a default_chunk.Qlist = v1_small72a
+set queue v1_small72a resources_min.ncpus = 1
+set queue v1_small72a resources_max.ncpus = 16
+set queue v1_small72a resources_max.ngpus = 0
+set queue v1_small72a resources_max.walltime = 72:0:0
+set queue v1_small72a resources_max.cput = 4147200
+set queue v1_small72a resources_max.mem = 128gb
+set queue v1_small72a resources_max.nodect = 1
+set queue v1_small72a max_array_size = 10000
+set queue v1_small72a enabled = True
+set queue v1_small72a started = True
+#
+# Create and define queue medium24
+#
+create queue v1_medium24
+set queue v1_medium24 queue_type = Execution
+set queue v1_medium24 default_chunk.Qlist = v1_medium24
+set queue v1_medium24 resources_min.ncpus = 1
+set queue v1_medium24 resources_max.ncpus = 64
+set queue v1_medium24 resources_max.ngpus = 0
+set queue v1_medium24 resources_max.walltime = 24:00:00
+set queue v1_medium24 resources_max.cput = 5529600
+set queue v1_medium24 resources_max.mem = 400gb
+set queue v1_medium24 resources_max.nodect = 1
+set queue v1_medium24 max_array_size = 0
+set queue v1_medium24 enabled = True
+set queue v1_medium24 started = True
+#
+# Create and define queue medium24a
+#
+create queue v1_medium24a
+set queue v1_medium24a queue_type = Execution
+set queue v1_medium24a default_chunk.Qlist = v1_medium24a
+set queue v1_medium24a resources_min.ncpus = 1
+set queue v1_medium24a resources_max.ncpus = 64
+set queue v1_medium24a resources_max.ngpus = 0
+set queue v1_medium24a resources_max.walltime = 24:00:00
+set queue v1_medium24a resources_max.cput = 5529600
+set queue v1_medium24a resources_max.mem = 400gb
+set queue v1_medium24a resources_max.nodect = 1
+set queue v1_medium24a max_array_size = 10000
+set queue v1_medium24a enabled = True
+set queue v1_medium24a started = True
+#
+# Create and define queue medium72
+#
+create queue v1_medium72
+set queue v1_medium72 queue_type = Execution
+set queue v1_medium72 default_chunk.Qlist = v1_medium72
+set queue v1_medium72 resources_min.ncpus = 1
+set queue v1_medium72 resources_max.ncpus = 64
+set queue v1_medium72 resources_max.ngpus = 0
+set queue v1_medium72 resources_max.walltime = 72:00:00
+set queue v1_medium72 resources_max.cput = 16588800
+set queue v1_medium72 resources_max.mem = 400gb
+set queue v1_medium72 resources_max.nodect = 1
+set queue v1_medium72 max_array_size = 0
+set queue v1_medium72 enabled = True
+set queue v1_medium72 started = True
+#
+# Create and define queue medium72a
+#
+create queue v1_medium72a
+set queue v1_medium72a queue_type = Execution
+set queue v1_medium72a default_chunk.Qlist = v1_medium72a
+set queue v1_medium72a resources_min.ncpus = 1
+set queue v1_medium72a resources_max.ncpus = 64
+set queue v1_medium72a resources_max.ngpus = 0
+set queue v1_medium72a resources_max.walltime = 72:00:00
+set queue v1_medium72a resources_max.cput = 16588800
+set queue v1_medium72a resources_max.mem = 400gb
+set queue v1_medium72a resources_max.nodect = 1
+set queue v1_medium72a max_array_size = 10000
+set queue v1_medium72a enabled = True
+set queue v1_medium72a started = True
+#
+# Create and define queue large24
+#
+create queue v1_large24
+set queue v1_large24 queue_type = Execution
+set queue v1_large24 default_chunk.Qlist = v1_large24
+set queue v1_large24 resources_min.ncpus = 1
+set queue v1_large24 resources_max.ncpus = 128
+set queue v1_large24 resources_max.ngpus = 0
+set queue v1_large24 resources_max.walltime = 24:00:00
+set queue v1_large24 resources_max.cput = 11059200
+set queue v1_large24 resources_max.mem = 920gb
+set queue v1_large24 resources_max.nodect = 1
+set queue v1_large24 max_array_size = 0
+set queue v1_large24 enabled = True
+set queue v1_large24 started = True
+#
+# Create and define queue large24a
+#
+create queue v1_large24a
+set queue v1_large24a queue_type = Execution
+set queue v1_large24a default_chunk.Qlist = v1_large24a
+set queue v1_large24a resources_min.ncpus = 1
+set queue v1_large24a resources_max.ncpus = 128
+set queue v1_large24a resources_max.ngpus = 0
+set queue v1_large24a resources_max.walltime = 24:00:00
+set queue v1_large24a resources_max.cput = 11059200
+set queue v1_large24a resources_max.mem = 920gb
+set queue v1_large24a resources_max.nodect = 1
+set queue v1_large24a max_array_size = 10000
+set queue v1_large24a enabled = True
+set queue v1_large24a started = True
+#
+# Create and define queue large72
+#
+create queue v1_large72
+set queue v1_large72 queue_type = Execution
+set queue v1_large72 default_chunk.Qlist = v1_large72
+set queue v1_large72 resources_min.ncpus = 1
+set queue v1_large72 resources_max.ncpus = 128
+set queue v1_large72 resources_max.ngpus = 0
+set queue v1_large72 resources_max.walltime = 72:00:00
+set queue v1_large72 resources_max.cput = 33177600
+set queue v1_large72 resources_max.mem = 920gb
+set queue v1_large72 resources_max.nodect = 1
+set queue v1_large72 max_array_size = 0
+set queue v1_large72 enabled = True
+set queue v1_large72 started = True
+#
+# Create and define queue large72a
+#
+create queue v1_large72a
+set queue v1_large72a queue_type = Execution
+set queue v1_large72a default_chunk.Qlist = v1_large72a
+set queue v1_large72a resources_min.ncpus = 1
+set queue v1_large72a resources_max.ncpus = 128
+set queue v1_large72a resources_max.ngpus = 0
+set queue v1_large72a resources_max.walltime = 72:00:00
+set queue v1_large72a resources_max.cput = 33177600
+set queue v1_large72a resources_max.mem = 920gb
+set queue v1_large72a resources_max.nodect = 1
+set queue v1_large72a max_array_size = 10000
+set queue v1_large72a enabled = True
+set queue v1_large72a started = True
+#
+# Create and define queue largemem
+#
+create queue v1_largemem72
+set queue v1_largemem72 queue_type = Execution
+set queue v1_largemem72 default_chunk.Qlist = v1_largemem72
+set queue v1_largemem72 resources_min.ncpus = 1
+set queue v1_largemem72 resources_max.ncpus = 128
+set queue v1_largemem72 resources_max.ngpus = 0
+set queue v1_largemem72 resources_max.walltime = 72:00:00
+set queue v1_largemem72 resources_max.cput = 33177600
+set queue v1_largemem72 resources_min.mem = 921gb
+set queue v1_largemem72 resources_max.mem = 4000gb
+set queue v1_largemem72 resources_max.nodect = 1
+set queue v1_largemem72 enabled = True
+set queue v1_largemem72 started = True
+#
+##### hx queues
+#
+# Create and define queue 24 hour capability
+#
+create queue v1_capability24
+set queue v1_capability24 queue_type = Execution
+set queue v1_capability24 default_chunk.Qlist = v1_capability24
+set queue v1_capability24 resources_min.ncpus = 1
+set queue v1_capability24 resources_max.ncpus = 2048
+set queue v1_capability24 resources_max.ngpus = 0
+set queue v1_capability24 resources_max.walltime = 24:00:00
+set queue v1_capability24 resources_max.cput = 176947200
+set queue v1_capability24 resources_max.nodect = 32
+set queue v1_capability24 resources_max.mem = 16384gb
+set queue v1_capability24 enabled = True
+set queue v1_capability24 started = True
+#
+# Create and define queue 48 hour capability
+#
+create queue v1_capability48
+set queue v1_capability48 queue_type = Execution
+set queue v1_capability48 default_chunk.Qlist = v1_capability48
+set queue v1_capability48 resources_min.ncpus = 1
+set queue v1_capability48 resources_max.ncpus = 2048
+set queue v1_capability48 resources_max.ngpus = 0
+set queue v1_capability48 resources_max.walltime = 48:00:00
+set queue v1_capability48 resources_max.cput = 353894400
+set queue v1_capability48 resources_max.nodect = 32
+set queue v1_capability48 resources_max.mem = 16384gb
+set queue v1_capability48 enabled = True
+set queue v1_capability48 started = True
+#
+# Create and define queue v1_a100
+#
+create queue v1_a100
+set queue v1_a100 queue_type = Execution
+set queue v1_a100 resources_max.cput = 259200
+set queue v1_a100 resources_max.mem = 920gb
+set queue v1_a100 resources_max.ncpus = 64
+set queue v1_a100 resources_max.ngpus = 4
+set queue v1_a100 resources_max.nodect = 1
+set queue v1_a100 resources_max.walltime = 72:00:00
+set queue v1_a100 resources_min.ncpus = 1
+set queue v1_a100 resources_min.ngpus = 1
+set queue v1_a100 default_chunk.Qlist = v1_a100
+set queue v1_a100 enabled = True
+set queue v1_a100 started = True
+#
+# Create routing queue for cx1/3. Do not include debug or interactive queues
+# 
+create queue cx
+set queue cx queue_type = route
+set queue cx route_destinations = "v1_gpu72,v1_small8,v1_small8a,v1_small24,v1_small24a,v1_medium24,v1_medium24a,v1_medium72,v1_medium72a,v1_large24,v1_large24a,v1_large72,v1_large72a,v1_largemem72"
+set queue cx resources_max.mem = 4000gb
+set queue cx resources_max.ncpus = 128
+set queue cx resources_max.cput = 33177600
+set queue cx resources_max.ngpus = 8
+set queue cx resources_max.nodect = 1
+set queue cx resources_max.walltime = 72:00:00
+set queue cx enabled = True
+set queue cx started = True
+#
+# Create routing queue for hx1 cluster
+#
+create queue hx
+set queue hx queue_type = route
+set queue hx route_destinations = "v1_a100,v1_capability24,v1_capability48"
+set queue hx resources_max.ncpus = 2048
+set queue hx resources_max.ngpus = 8
+set queue hx resources_max.walltime = 48:00:00
+set queue hx resources_max.cput = 353894400
+set queue hx resources_max.nodect = 32
+set queue hx resources_max.mem = 16384gb
+set queue hx enabled = True
+set queue hx started = True
+#
+# Set routing as the default queue
+#
+set server default_queue = cx
+set server resources_default.ncpus = 1
+set server resources_default.ngpus = 0
+set server resources_default.mem = 1gb
+set server resources_default.walltime = 1:0:0
+#
+# Set Server defaults and max
+#
+set server default_chunk.ompthreads = 1
+set server default_chunk.ncpus = 1
+set server resources_max.walltime = 72:00:00
+set server resources_default.place = free

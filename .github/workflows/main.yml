@@ -26,8 +26,9 @@ jobs:
 
       - run: sudo iptables -F
 
+      - run: sudo /opt/pbs/bin/qmgr < tests/jobs/test-cluster
       - run: sudo /opt/pbs/bin/pbsnodes -a
-      - run: /opt/pbs/bin/qsub tests/*.pbs
+      - run: /opt/pbs/bin/qsub tests/jobs/*.pbs
       - run: /opt/pbs/bin/qstat -q
       - run: sleep 10
 
