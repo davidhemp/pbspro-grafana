@@ -371,7 +371,7 @@ set queue v1_a100 started = True
 # 
 create queue cx
 set queue cx queue_type = route
-set queue cx route_destinations = "v1_gpu72,v1_small8,v1_small8a,v1_small24,v1_small24a,v1_medium24,v1_medium24a,v1_medium72,v1_medium72a,v1_large24,v1_large24a,v1_large72,v1_large72a,v1_largemem72"
+set queue cx route_destinations = "v1_gpu72,v1_small24,v1_small24a,v1_small72,v1_small72a,v1_medium24,v1_medium24a,v1_medium72,v1_medium72a,v1_large24,v1_large24a,v1_large72,v1_large72a,v1_largemem72"
 set queue cx resources_max.mem = 4000gb
 set queue cx resources_max.ncpus = 128
 set queue cx resources_max.cput = 33177600
