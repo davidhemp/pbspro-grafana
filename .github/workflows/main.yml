@@ -10,15 +10,17 @@ jobs:
   tests:
     name: Run test Jobs
     runs-on: ubuntu-20.04
+    env:
+      influxdb_version: latest
+      influxdb_org: influxdata
+      influxdb_user: ci_user
+      influxdb_password: password
+      influxdb_bucket: dummy      
     steps: 
     #Checkout repo so job can acces it
     - uses: actions/checkout@v3
 
     - name: Install InfluxDB
-      uses: davidhemp/influxdb-action@v2
+      uses: actions/checkout@v3
       with:
-        influxdb_version: latest
-        influxdb_org: influxdata
-        influxdb_user: ci_user
-        influxdb_password: password
-        influxdb_bucket: dummy      
+        repository: davidhemp/influxdb-action 
