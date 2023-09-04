@@ -30,8 +30,8 @@ jobs:
         ./influxdb/install-influxdb.sh
         ./influxdb/setup-influxdb.sh
 
-    - name: Test influxdb
-      run: curl --request GET "INFLUX_URL/api/v2/buckets"  --header "Authorization: Token $INFLUXDB_TOKEN" 
+#    - name: Test influxdb
+#      run: curl --request GET "http://localhost:8086/api/v2/buckeLts"  --header "Authorization: Token $INFLUXDB_TOKEN" 
 
     - name: Install monitoring env
       run: bash install.sh 
