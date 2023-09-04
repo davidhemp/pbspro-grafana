@@ -22,6 +22,9 @@ jobs:
 
     - name: Install influxdb
       run: tests/influxdb/install.sh
+
+    - run: ps aux | grep influx
+
     - name: Test influxdb
       run: tests/influxdb/test.sh
 
