@@ -12,7 +12,7 @@ export PATH:/usr/local/bin/:$PATH
 
 if [ "$INFLUXDB_START" = "true" ]
 then
-    /usr/local/bin/influxd --http-bind-address :8086 --reporting-disabled > /dev/null 2>&1 &
+    /usr/local/bin/influxd --http-bind-address :8086  &
     until curl -s http://localhost:8086/health; do sleep 1; done
     influx setup --host http://localhost:8086 -f \
         -o $INFLUXDB_ORG \
