@@ -20,15 +20,8 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Checkout InfluxDB installer
-      uses: actions/checkout@v3
-      with:
-        repository: davidhemp/influxdb-action 
-        path: './influxdb'
-    - name: Download influxdb
-      run: ./influxdb/install-influxdb.sh
-    - name: Configure influxdb
-      run: ./influxdb/setup-influxdb.sh
+    - name: Install influxdb
+      run: ./tests/install-influxdb.sh
     - name: Test influxdb
       run: tests/influxdb-tests.sh
 
