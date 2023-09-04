@@ -27,7 +27,7 @@ jobs:
     - name: Test influxdb
       run: tests/influxdb/test.sh
     - name: Grab Token and update env
-      run: echo "INFLUXDB_TOKEN=$(influx auth list | grep $INFLUXDB_USER | grep -o '[[:alnum:]\_\-]*==')" >> $GITHUB_ENV
+      run: echo "INFLUXDB_TOKEN=$(influx auth list | grep $INFLUXDB_USER | grep -o '[[:alnum:]\_\-]*==')" 
 
     - name: Install monitoring env
       run: bash install.sh 
