@@ -11,6 +11,7 @@ jobs:
     name: Run test Jobs
     runs-on: ubuntu-20.04
     env:
+      INFLUXDB_START: true
       INFLUXDB_ORG: influxdata
       INFLUXDB_USER: ci_user
       INFLUXDB_PASSWORD: password
@@ -22,8 +23,6 @@ jobs:
 
     - name: Install influxdb
       run: tests/influxdb/install.sh
-    - name: Start influxdb
-      run: /usr/local/bin/influxdb --http-bind-address :8086 
     - name: Test influxdb
       run: tests/influxdb/test.sh
 
