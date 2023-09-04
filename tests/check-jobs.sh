@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 EXIT_CODE=0
 for line in $(qstat | grep runner); do 
