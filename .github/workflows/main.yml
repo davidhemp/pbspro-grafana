@@ -29,12 +29,14 @@ jobs:
       run: ./influxdb/install-influxdb.sh
     - name: Configure influxdb
       run: ./influxdb/setup-influxdb.sh
-
-#    - name: Test influxdb
-#      run: curl --request GET "http://localhost:8086/api/v2/buckeLts"  --header "Authorization: Token $INFLUXDB_TOKEN" 
+    - name: Test influxdb
+      run: tests/influxdb-tests.sh
 
     - name: Install monitoring env
       run: bash install.sh 
+
+    - name: Test monitoring
+      run: bash run.sh
 
     - run: sudo useradd -r -c "PBS data service management account" pbsdata
     - run: wget https://vcdn.altair.com/rl/OpenPBS/openpbs_23.06.06.ubuntu_20.04.zip
