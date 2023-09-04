@@ -21,3 +21,9 @@ class Connector:
     def write(self, p):
         write_api = self.connect().write_api(write_options=SYNCHRONOUS)
         write_api.write(bucket=self.bucket, org=self.organization, record=p)
+
+
+if __name__ == "__main__":
+    conn = Connector()
+
+
