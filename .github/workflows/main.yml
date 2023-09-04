@@ -25,4 +25,3 @@ jobs:
       with:
         repository: davidhemp/influxdb-action 
         path: './influxdb'
-      - run: ./influxdb/install-influxdb.sh
