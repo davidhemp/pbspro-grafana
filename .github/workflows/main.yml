@@ -18,6 +18,7 @@ jobs:
     steps: 
     - name: Checkout repo
       uses: actions/checkout@v3
+    - run: sudo iptables -F
 
     - name: Install influxdb
       run: tests/influxdb/install.sh
@@ -29,16 +30,8 @@ jobs:
     - name: Test monitoring
       run: bash run.sh
 
-    - run: sudo useradd -r -c "PBS data service management account" pbsdata
-    - run: wget https://vcdn.altair.com/rl/OpenPBS/openpbs_23.06.06.ubuntu_20.04.zip
-    - run: sudo apt-get install unzip libhwloc15 libical3 libpq5 munge
-    - run: unzip openpbs_23.06.06.ubuntu_20.04.zip
-    - run: sudo dpkg -i openpbs_23.06.06.ubuntu_20.04/openpbs-server_23.06.06-1_amd64.deb
-    - run: sudo create-munge-key
-    - run: sudo ln -s /lib64/libmunge.so.2 /lib64/libmunge.so
-    - run: sudo sed -i 's/PBS_START_MOM=0/PBS_START_MOM=1/g' /etc/pbs.conf
-    - run: sudo systemctl restart pbs
-    - run: sudo iptables -F
+    - name: Install PBS
+      run: tests/pbs/install.sh
 
     - name: PBS tests
       run: |
