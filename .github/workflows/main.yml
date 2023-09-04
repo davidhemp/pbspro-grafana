@@ -11,11 +11,10 @@ jobs:
     name: Run test Jobs
     runs-on: ubuntu-20.04
     env:
-      influxdb_version: latest
-      influxdb_org: influxdata
-      influxdb_user: ci_user
-      influxdb_password: password
-      influxdb_bucket: dummy      
+      INFLUXDB_ORG: influxdata
+      INFLUXDB_USER: ci_user
+      INFLUXDB_PASSWORD: password
+      INFLUXDB_BUCKET: dummy      
     steps: 
     - name: Checkout repo
       uses: actions/checkout@v3
