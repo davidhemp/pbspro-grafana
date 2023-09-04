@@ -25,10 +25,10 @@ jobs:
       with:
         repository: davidhemp/influxdb-action 
         path: './influxdb'
-    - name: Download and configure influxdb
-      run: |
-        ./influxdb/install-influxdb.sh
-        ./influxdb/setup-influxdb.sh
+    - name: Download influxdb
+      run: ./influxdb/install-influxdb.sh
+    - name: Configure influxdb
+      run: ./influxdb/setup-influxdb.sh
 
 #    - name: Test influxdb
 #      run: curl --request GET "http://localhost:8086/api/v2/buckeLts"  --header "Authorization: Token $INFLUXDB_TOKEN" 
