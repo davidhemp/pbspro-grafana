@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install influxdb
-      run: ./tests/install-influxdb.sh
+      run: tests/influxdb/install-influxdb.sh
     - name: Test influxdb
       run: tests/influxdb-tests.sh
 
