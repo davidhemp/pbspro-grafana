@@ -29,18 +29,17 @@ jobs:
     - name: Grab Token and update env
       run: echo "INFLUXDB_TOKEN=$(influx auth list | grep $INFLUXDB_USER | grep -o '[[:alnum:]\_\-]*==')" >> $GITHUB_ENV 
 
-    - name: Install monitoring env
-      run: bash install.sh 
-    - name: Test monitoring
-      run: bash run.sh
-
     - name: Install PBS
       run: tests/pbs/install.sh
-
     - name: Run PBS tests
       run: tests/pbs/run-tests.sh
     - name: Check PBSPro test jobs
       run: tests/check-tests.sh > tests/logs/check-tests.log
+
+    - name: Install monitoring env
+      run: bash install.sh 
+    - name: Test monitoring
+      run: . venv/bin/activate && bash tests/run.sh
 
     - name: artifact logs for download
       uses: actions/upload-artifact@v3
