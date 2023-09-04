@@ -20,12 +20,16 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Install InfluxDB
+    - name: Checkout InfluxDB installer
       uses: actions/checkout@v3
       with:
         repository: davidhemp/influxdb-action 
         path: './influxdb'
+    - name: Download influxdb
       run: ./influxdb/install-influxdb.sh
+
+    - name: Configure influxdb
+      run: ./influxdb/setup-influxdb.sh
 
     - run: sudo useradd -r -c "PBS data service management account" pbsdata
     - run: wget https://vcdn.altair.com/rl/OpenPBS/openpbs_23.06.06.ubuntu_20.04.zip
