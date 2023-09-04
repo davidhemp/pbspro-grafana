@@ -10,4 +10,3 @@ for line in $(qstat | grep runner); do
   fi
 done
 exit ${EXIT_CODE}
-
