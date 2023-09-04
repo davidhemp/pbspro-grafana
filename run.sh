@@ -1,5 +1,5 @@
 #!/bin/bash
 
-. .env
+. run_env
 
-echo "$TEST_VAR"
+echo "$INFLUXDB_BUCKET"
