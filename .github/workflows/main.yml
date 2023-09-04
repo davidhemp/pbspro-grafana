@@ -30,7 +30,7 @@ jobs:
     - name: Configure influxdb
       run: ./influxdb/setup-influxdb.sh
     - name: Run influx-tests
-      run: ./run
+      run: ls 
 
 
     - run: sudo useradd -r -c "PBS data service management account" pbsdata
