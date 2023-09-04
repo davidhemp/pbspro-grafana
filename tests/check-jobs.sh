@@ -8,5 +8,6 @@ for line in $(qstat | grep runner); do
     echo "Error found in: ${line}"
     EXIT_CODE=1
   fi
+done
 exit ${EXIT_CODE}
 
