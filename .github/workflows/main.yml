@@ -39,7 +39,7 @@ jobs:
     - name: Install monitoring env
       run: bash install.sh 
     - name: Test monitoring
-      run: . venv/bin/activate && bash tests/run.sh
+      run: . venv/bin/activate && python main.py
 
     - name: artifact logs for download
       uses: actions/upload-artifact@v3
