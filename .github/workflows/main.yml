@@ -20,9 +20,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install influxdb
-      run: tests/influxdb/install-influxdb.sh
+      run: tests/influxdb/install.sh
     - name: Test influxdb
-      run: tests/influxdb/influxdb-tests.sh
+      run: tests/influxdb/test.sh
 
     - name: Install monitoring env
       run: bash install.sh 
