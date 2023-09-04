@@ -22,11 +22,10 @@ jobs:
     - name: Install influxdb
       run: tests/influxdb/install-influxdb.sh
     - name: Test influxdb
-      run: tests/influxdb-tests.sh
+      run: tests/influxdb/influxdb-tests.sh
 
     - name: Install monitoring env
       run: bash install.sh 
-
     - name: Test monitoring
       run: bash run.sh
 
