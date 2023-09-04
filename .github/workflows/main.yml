@@ -27,9 +27,11 @@ jobs:
         path: './influxdb'
     - name: Download influxdb
       run: ./influxdb/install-influxdb.sh
-
     - name: Configure influxdb
       run: ./influxdb/setup-influxdb.sh
+    - name: Run influx-tests
+      run: ./run
+
 
     - run: sudo useradd -r -c "PBS data service management account" pbsdata
     - run: wget https://vcdn.altair.com/rl/OpenPBS/openpbs_23.06.06.ubuntu_20.04.zip
