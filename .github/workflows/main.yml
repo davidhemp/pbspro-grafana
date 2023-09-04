@@ -25,13 +25,13 @@ jobs:
       with:
         repository: davidhemp/influxdb-action 
         path: './influxdb'
-    - name: Download influxdb
-      run: ./influxdb/install-influxdb.sh
-    - name: Configure influxdb
-      run: ./influxdb/setup-influxdb.sh
-    - name: Run influx-tests
-      run: ls 
-
+    - name: Download and configure influxdb
+      run: |
+        ./influxdb/install-influxdb.sh
+        ./influxdb/setup-influxdb.sh
+    
+    - name: Install monitoring env
+      run: bash install.sh 
 
     - run: sudo useradd -r -c "PBS data service management account" pbsdata
     - run: wget https://vcdn.altair.com/rl/OpenPBS/openpbs_23.06.06.ubuntu_20.04.zip
@@ -42,16 +42,18 @@ jobs:
     - run: sudo ln -s /lib64/libmunge.so.2 /lib64/libmunge.so
     - run: sudo sed -i 's/PBS_START_MOM=0/PBS_START_MOM=1/g' /etc/pbs.conf
     - run: sudo systemctl restart pbs
-    - run: mkdir -p tests/logs
-
     - run: sudo iptables -F
 
-    - run: sudo /opt/pbs/bin/qmgr < tests/test-cluster
-    - run: sudo /opt/pbs/bin/pbsnodes -a > tests/logs/pbsnodes.log
-    - run: for j in $(ls tests/jobs/); do /opt/pbs/bin/qsub tests/jobs/${j}; done
-    - run: /opt/pbs/bin/qstat > tests/logs/qstat-start.log
-    - run: sleep 5
-    - run: tests/check-jobs.sh > tests/logs/check-jobs.log
+    - name: PBS tests
+      run: |
+        mkdir -p tests/logs
+        sudo /opt/pbs/bin/qmgr < tests/test-cluster
+        sudo /opt/pbs/bin/pbsnodes -a > tests/logs/pbsnodes.log
+        for j in $(ls tests/jobs/); do /opt/pbs/bin/qsub tests/jobs/${j}; done
+        /opt/pbs/bin/qstat > tests/logs/qstat-start.log
+        sleep 5
+    - name: Check PBSPro test jobs
+      run: tests/check-jobs.sh > tests/logs/check-jobs.log
 
     - name: artifact logs for download
       uses: actions/upload-artifact@v3
