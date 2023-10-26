@@ -9,7 +9,7 @@ on:
 jobs:
   tests:
     name: Run test Jobs
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     env:
       INFLUXDB_START: true
       INFLUXDB_URL: http://localhost:8086 
