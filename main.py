@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-import os
+import yaml
 
 import influxdb
 import influxdb_client
 
 import qstat
 import qmgr
+
+# Local config file
+with open("config.yaml", 'r') as file:
+        config = yaml.safe_load(file)
+
 
 conn = influxdb.Connector()
 
