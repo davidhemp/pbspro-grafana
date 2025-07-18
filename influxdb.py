@@ -4,11 +4,11 @@ import influxdb_client
 from influxdb_client.client.write_api import SYNCHRONOUS
 
 class Connector:
-    def __init__(self):
-        self.url = os.environ["INFLUXDB_URL"]
-        self.token = os.environ["INFLUXDB_TOKEN"]
-        self.organization = os.environ["INFLUXDB_ORG"]
-        self.bucket = os.environ["INFLUXDB_BUCKET"]
+    def __init__(self, config):
+        self.url = config["URL"]
+        self.token = config["TOKEN"]
+        self.organization = config["ORG"]
+        self.bucket = config["BUCKET"]
 
     def connect(self):
         client = influxdb_client.InfluxDBClient(
