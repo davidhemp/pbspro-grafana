@@ -12,8 +12,8 @@ fi
 echo "Found $($PYTHON -V)"
 
 #Check pip is installed
-$PYTHON -m ensurepip --upgrade 
-$PYTHON -m pip install --upgrade pip
+$PYTHON -m ensurepip --upgrade --user
+$PYTHON -m pip install --upgrade --user pip 
 if [[ "$($PYTHON -m pip --version 2>/dev/null)" =~ "pip 2" ]]; then
   PIP=pip
 elif [[ "$($PYTHON -m pip3 --version 2>/dev/null)" =~ "pip 2" ]]; then
@@ -26,7 +26,7 @@ fi
 $PYTHON -m $PIP --version
 
 #Check virtualenv is installed
-$PYTHON -m $PIP install virtualenv
+$PYTHON -m $PIP install virtualenv --user
 if [[ "$?" != "0" ]]; then
   echo "Installation of virtualenv failed"
   exit 1
