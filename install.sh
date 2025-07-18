@@ -34,4 +34,4 @@ fi
 
 $PYTHON -m virtualenv venv
 source venv/bin/activate
-$PYTHON -m $PIP install influxdb_client
+$PYTHON -m $PIP install influxdb_client pyyaml
