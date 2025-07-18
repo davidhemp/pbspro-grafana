@@ -10,7 +10,7 @@ import qmgr
 # Local config file
 with open("config.yaml", 'r') as file:
         config = yaml.safe_load(file)
-conn = influxdb.Connector(config)
+conn = influxdb.Connector(config["influx"])
 
 queue_usage = qstat.queue_utilsation()
 for cluster in ["cx", "hx"]:
